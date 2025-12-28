@@ -1,0 +1,226 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+@layer base {
+  :root {
+    /* Core Palette */
+    --background: 40 27% 95%;
+    --foreground: 0 0% 10%;
+
+    --card: 40 27% 97%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 40 27% 97%;
+    --popover-foreground: 0 0% 10%;
+
+    /* Deep Green - Primary */
+    --primary: 145 73% 21%;
+    --primary-foreground: 40 27% 95%;
+
+    /* Olive Shadow - Secondary */
+    --secondary: 150 38% 17%;
+    --secondary-foreground: 40 27% 95%;
+
+    /* Antique Gold - Accent */
+    --accent: 46 70% 47%;
+    --accent-foreground: 0 0% 10%;
+
+    --muted: 40 20% 90%;
+    --muted-foreground: 150 20% 35%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 40 27% 95%;
+
+    --border: 40 20% 85%;
+    --input: 40 20% 85%;
+    --ring: 145 73% 21%;
+
+    --radius: 0.75rem;
+
+    /* Custom Tokens */
+    --gold: 46 70% 47%;
+    --gold-light: 46 60% 70%;
+    --deep-green: 145 73% 21%;
+    --olive: 150 38% 17%;
+    --sand: 40 27% 95%;
+    --sand-dark: 40 20% 88%;
+    --ink: 0 0% 10%;
+
+    /* Gradients */
+    --gradient-radial: radial-gradient(circle at center, hsl(var(--primary) / 0.1) 0%, transparent 70%);
+    --gradient-earth: linear-gradient(180deg, hsl(var(--sand)) 0%, hsl(var(--sand-dark)) 100%);
+    --gradient-deep: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+
+    /* Shadows */
+    --shadow-soft: 0 4px 24px -4px hsl(var(--primary) / 0.15);
+    --shadow-gold: 0 4px 32px -8px hsl(var(--gold) / 0.4);
+    --shadow-elevated: 0 8px 40px -12px hsl(var(--ink) / 0.2);
+
+    /* Sidebar */
+    --sidebar-background: 40 27% 97%;
+    --sidebar-foreground: 0 0% 10%;
+    --sidebar-primary: 145 73% 21%;
+    --sidebar-primary-foreground: 40 27% 95%;
+    --sidebar-accent: 46 70% 47%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 40 20% 85%;
+    --sidebar-ring: 145 73% 21%;
+  }
+
+  .dark {
+    --background: 0 0% 8%;
+    --foreground: 40 27% 95%;
+
+    --card: 0 0% 12%;
+    --card-foreground: 40 27% 95%;
+
+    --popover: 0 0% 12%;
+    --popover-foreground: 40 27% 95%;
+
+    --primary: 145 60% 35%;
+    --primary-foreground: 40 27% 95%;
+
+    --secondary: 150 30% 25%;
+    --secondary-foreground: 40 27% 95%;
+
+    --accent: 46 70% 55%;
+    --accent-foreground: 0 0% 10%;
+
+    --muted: 0 0% 18%;
+    --muted-foreground: 40 20% 70%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 145 60% 35%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+
+  .text-gold {
+    @apply text-accent;
+  }
+
+  .bg-radial {
+    background: var(--gradient-radial);
+  }
+
+  .bg-earth {
+    background: var(--gradient-earth);
+  }
+
+  .bg-deep {
+    background: var(--gradient-deep);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+}
+
+@layer utilities {
+  /* Mandala Pattern Animation */
+  @keyframes rotate-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes rotate-reverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+  }
+
+  @keyframes pulse-ring {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.05); opacity: 0.3; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes expand-circle {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  @keyframes draw-circle {
+    from { stroke-dashoffset: 314; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  .animate-rotate-slow {
+    animation: rotate-slow 60s linear infinite;
+  }
+
+  .animate-rotate-reverse {
+    animation: rotate-reverse 45s linear infinite;
+  }
+
+  .animate-pulse-ring {
+    animation: pulse-ring 3s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+  }
+
+  .animate-expand-circle {
+    animation: expand-circle 0.6s ease-out forwards;
+  }
+
+  .animate-draw-circle {
+    animation: draw-circle 1.5s ease-out forwards;
+  }
+
+  /* Hide scrollbar for horizontal scroll */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
