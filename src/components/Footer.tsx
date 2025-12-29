@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Instagram, Facebook, Linkedin, Twitter } from 'lucide-react';
 import MandalaPattern from './MandalaPattern';
 
+import logo from '@/assets/logo2.png';
 const Footer: React.FC = () => {
   return (
     <footer className="relative bg-secondary text-primary-foreground overflow-hidden">
@@ -16,8 +17,8 @@ const Footer: React.FC = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center">
-                <span className="text-accent-foreground font-heading text-xl font-bold">स</span>
+              <div className="w-12 h-12  items-center justify-center">
+                <span className="text-accent-foreground font-heading text-xl font-bold"><img src={logo} alt="" /></span>
               </div>
               <span className="font-heading text-xl">Seva Samarpit</span>
             </div>
@@ -80,16 +81,18 @@ const Footer: React.FC = () => {
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-accent mt-0.5 shrink-0" />
                 <span className="text-primary-foreground/70 text-sm">
-                  123 Gandhi Road, New Delhi, India 110001
+                E-205, Basudeo Vihar Apartment, Nageshwar colony, Patna, Bihar 800001
+
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-accent shrink-0" />
-                <span className="text-primary-foreground/70 text-sm">+91 98765 43210</span>
+                <span className="text-primary-foreground/70 text-sm">+91-79924 81330
+                </span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-accent shrink-0" />
-                <span className="text-primary-foreground/70 text-sm">seva@samarpitfoundation.org</span>
+                <span className="text-primary-foreground/70 text-sm">sevasamarpitfoundaiton@gmail.com</span>
               </li>
             </ul>
           </div>

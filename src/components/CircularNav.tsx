@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import logo from '@/assets/logo2.png';
 
 const navItems = [
   { label: 'Home', path: '/' },
@@ -72,9 +73,14 @@ const CircularNav: React.FC = () => {
         className="fixed top-6 left-6 z-50 flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-accent rounded-lg p-1"
         onClick={() => setIsOpen(false)}
       >
-        <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center shadow-soft group-hover:shadow-elevated transition-shadow">
-          <span className="text-primary-foreground font-heading text-xl font-bold">स</span>
-        </div>
+       <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center shadow-soft group-hover:shadow-elevated transition-shadow">
+  <img
+    src={logo}
+    alt="logo"
+    className="w-10 h-10 object-contain"
+  />
+</div>
+
         <span className="hidden md:block font-heading text-lg text-foreground">
           Seva Samarpit
         </span>

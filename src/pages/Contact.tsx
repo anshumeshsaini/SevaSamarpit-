@@ -1,27 +1,69 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, ArrowRight, X } from 'lucide-react';
 import CircularNav from '@/components/CircularNav';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import MandalaPattern from '@/components/MandalaPattern';
 
 const Contact: React.FC = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: 'General Inquiry',
+    message: '',
+  });
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Prepare email body
+    const subject = `Contact Form: ${formData.subject} - ${formData.name}`;
+    const body = `
+New Contact Form Submission!
+
+Name: ${formData.name}
+Email: ${formData.email}
+Subject: ${formData.subject}
+Message: ${formData.message}
+
+---
+Seva Samarpit Foundation Contact Form
+Submitted on: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
+    `.trim();
+
+    // Encode for mailto
+    const mailtoLink = `mailto:sevasamarpitfoundaiton@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Open email client
+    window.open(mailtoLink, '_blank');
+    
+    // Reset form and close dialog
+    setFormData({ name: '', email: '', subject: 'General Inquiry', message: '' });
+    setIsFormOpen(false);
+  };
+
   return (
     <>
       <Helmet>
         <title>Contact Us - Reach Out to Seva Samarpit Foundation</title>
-        <meta name="description" content="Contact Seva Samarpit Foundation in New Delhi. Call +91 98765 43210, email seva@samarpitfoundation.org, or visit our office. We respond within 24 hours." />
-        <meta name="keywords" content="contact NGO, Seva Samarpit address, nonprofit contact, charity helpline, volunteer inquiry, partnership contact" />
+        <meta name="description" content="Contact Seva Samarpit Foundation in Patna, Bihar. Call +91 79924 81330, email sevasamarpitfoundaiton@gmail.com, or visit our office at Basudeo Vihar Apartment. We respond within 24 hours." />
+        <meta name="keywords" content="contact NGO Patna, Seva Samarpit address, nonprofit Bihar, charity helpline, volunteer Patna, partnership contact" />
         <link rel="canonical" href="https://sevasamarpit.org/contact" />
         
         <meta property="og:title" content="Contact Seva Samarpit Foundation" />
-        <meta property="og:description" content="Get in touch with us. We're here to answer your questions and welcome you to our circle of seva." />
+        <meta property="og:description" content="Get in touch with us in Patna, Bihar. We're here to answer your questions and welcome you to our circle of seva." />
         <meta property="og:url" content="https://sevasamarpit.org/contact" />
         <meta property="og:type" content="website" />
         
         <meta name="twitter:title" content="Contact Us | Seva Samarpit Foundation" />
-        <meta name="twitter:description" content="Reach out to us. We respond within 24 hours." />
+        <meta name="twitter:description" content="Reach out to us in Patna. We respond within 24 hours." />
         
         <script type="application/ld+json">
           {JSON.stringify({
@@ -33,14 +75,14 @@ const Contact: React.FC = () => {
             "mainEntity": {
               "@type": "Organization",
               "name": "Seva Samarpit Foundation",
-              "telephone": "+91-98765-43210",
-              "email": "seva@samarpitfoundation.org",
+              "telephone": "+91-79924-81330",
+              "email": "sevasamarpitfoundaiton@gmail.com",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "123 Gandhi Road, Connaught Place",
-                "addressLocality": "New Delhi",
-                "addressRegion": "Delhi",
-                "postalCode": "110001",
+                "streetAddress": "E-205, Basudeo Vihar Apartment, Nageshwar Colony",
+                "addressLocality": "Patna",
+                "addressRegion": "Bihar",
+                "postalCode": "800001",
                 "addressCountry": "IN"
               },
               "openingHoursSpecification": [
@@ -88,58 +130,19 @@ const Contact: React.FC = () => {
         <section className="py-16 bg-background">
           <div className="container mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-              {/* Contact Form */}
+              {/* Contact Form - Button Trigger */}
               <div className="bg-card rounded-3xl p-8 shadow-elevated">
                 <h2 className="font-heading text-2xl text-foreground mb-6">Send us a message</h2>
-                <form className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-body text-muted-foreground mb-2">
-                        Your Name
-                      </label>
-                      <input
-                        type="text"
-                        className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
-                        placeholder="Enter your name"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-body text-muted-foreground mb-2">
-                        Email Address
-                      </label>
-                      <input
-                        type="email"
-                        className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
-                        placeholder="Enter your email"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-body text-muted-foreground mb-2">
-                      Subject
-                    </label>
-                    <select className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-accent">
-                      <option>General Inquiry</option>
-                      <option>Volunteer Opportunities</option>
-                      <option>Corporate Partnership</option>
-                      <option>Donation Query</option>
-                      <option>Media & Press</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-body text-muted-foreground mb-2">
-                      Message
-                    </label>
-                    <textarea
-                      rows={5}
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-accent resize-none"
-                      placeholder="Tell us how we can help..."
-                    />
-                  </div>
-                  <Button variant="hero" size="xl" className="w-full">
-                    Send Message
-                  </Button>
-                </form>
+                <p className="text-muted-foreground mb-8">Fill out the form and we'll get back to you within 24 hours.</p>
+                <Button 
+                  variant="hero" 
+                  size="xl" 
+                  className="w-full"
+                  onClick={() => setIsFormOpen(true)}
+                >
+                  Open Contact Form
+                  <ArrowRight className="ml-2" />
+                </Button>
               </div>
 
               {/* Contact Info */}
@@ -152,23 +155,23 @@ const Contact: React.FC = () => {
                       <div>
                         <p className="font-body">Head Office</p>
                         <p className="text-primary-foreground/70 text-sm">
-                          123 Gandhi Road, Connaught Place
+                          E-205, Basudeo Vihar Apartment, Nageshwar colony
                           <br />
-                          New Delhi, India 110001
+                          Patna, Bihar 800001
                         </p>
                       </div>
                     </div>
                     <div className="flex items-center gap-4">
                       <Phone className="text-accent shrink-0" size={20} />
                       <div>
-                        <p className="font-body">+91 98765 43210</p>
+                        <p className="font-body">+91-79924 81330</p>
                         <p className="text-primary-foreground/70 text-sm">Mon-Sat, 9am-6pm IST</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-4">
                       <Mail className="text-accent shrink-0" size={20} />
                       <div>
-                        <p className="font-body">seva@samarpitfoundation.org</p>
+                        <p className="font-body">sevasamarpitfoundaiton@gmail.com</p>
                         <p className="text-primary-foreground/70 text-sm">We respond within 24 hours</p>
                       </div>
                     </div>
@@ -196,14 +199,101 @@ const Contact: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Map Placeholder */}
-                <div className="h-48 rounded-2xl bg-muted flex items-center justify-center">
-                  <span className="text-muted-foreground text-sm">Map Integration</span>
+                {/* Interactive Google Map */}
+                <div className="relative rounded-2xl bg-muted overflow-hidden shadow-soft h-80 sm:h-96 lg:h-[420px]">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7542.256036176332!2d85.121992!3d25.611672!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed59005635afb9%3A0x99acd0be89532270!2sBasudeo%20Vihar%20Apartment!5e1!3m2!1sen!2sin!4v1767026873324!5m2!1sen!2sin"
+                    className="absolute inset-0 w-full h-full"
+                    style={{ border: 0 }}
+                    allowFullScreen={true}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Seva Samarpit Foundation - Basudeo Vihar Apartment, Patna"
+                  />
                 </div>
               </div>
             </div>
           </div>
         </section>
+
+        {/* Contact Form Dialog */}
+        <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
+          <DialogContent className="max-w-2xl max-h-[90vh] p-0">
+            <DialogHeader className="p-8 border-b">
+              <DialogTitle className="text-3xl font-heading text-center">
+                Get In Touch
+              </DialogTitle>
+            </DialogHeader>
+            <form onSubmit={handleFormSubmit} className="p-8 max-h-[70vh] overflow-y-auto">
+              <div className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="name">Your Name *</Label>
+                    <Input
+                      id="name"
+                      value={formData.name}
+                      onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                      required
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="email">Email Address *</Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="subject">Subject *</Label>
+                  <Select value={formData.subject} onValueChange={(value) => setFormData(prev => ({ ...prev, subject: value }))}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="General Inquiry">General Inquiry</SelectItem>
+                      <SelectItem value="Volunteer Opportunities">Volunteer Opportunities</SelectItem>
+                      <SelectItem value="Corporate Partnership">Corporate Partnership</SelectItem>
+                      <SelectItem value="Donation Query">Donation Query</SelectItem>
+                      <SelectItem value="Media & Press">Media & Press</SelectItem>
+                      <SelectItem value="Event Collaboration">Event Collaboration</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="message">Message *</Label>
+                  <Textarea
+                    id="message"
+                    rows={5}
+                    value={formData.message}
+                    onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
+                    placeholder="Tell us how we can help you..."
+                    required
+                  />
+                </div>
+
+                <div className="pt-4 flex gap-3 justify-end">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => setIsFormOpen(false)}
+                  >
+                    Cancel
+                  </Button>
+                  <Button type="submit" className="bg-primary hover:bg-primary/90">
+                    Send Message
+                    <ArrowRight className="ml-2" />
+                  </Button>
+                </div>
+              </div>
+            </form>
+          </DialogContent>
+        </Dialog>
       </main>
 
       <Footer />

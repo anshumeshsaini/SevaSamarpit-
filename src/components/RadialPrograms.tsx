@@ -40,8 +40,8 @@ const programs = [
   {
     id: 6,
     icon: Droplets,
-    title: 'Clean Water',
-    description: 'Providing access to safe drinking water',
+    title: 'flood relief',
+    description: 'Providing Food and water',
     color: 'bg-cyan-500/10 text-cyan-600',
   },
 ];

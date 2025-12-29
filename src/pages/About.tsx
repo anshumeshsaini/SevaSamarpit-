@@ -5,13 +5,70 @@ import Footer from '@/components/Footer';
 import MandalaPattern from '@/components/MandalaPattern';
 
 const timeline = [
-  { year: '2009', title: 'The Seed is Planted', description: 'Founded by a group of passionate individuals in New Delhi with a vision to serve.' },
-  { year: '2012', title: 'First Village Adopted', description: 'Began comprehensive development work in our first village in Rajasthan.' },
-  { year: '2015', title: 'Women First Initiative', description: 'Launched empowerment programs reaching 1,000 women across 5 states.' },
-  { year: '2018', title: 'Education Revolution', description: 'Established 25 learning centers providing quality education to rural children.' },
-  { year: '2021', title: 'Healthcare Network', description: 'Mobile health clinics now serve 100+ remote villages monthly.' },
-  { year: '2024', title: 'Circle Expands', description: '50,000 lives transformed across 120 villages with 2,500+ active volunteers.' },
-];
+
+    {
+      year: '2016',
+      title: 'Foundation & Registration',
+      description:
+        'Seva Samarpit Foundation was established with a commitment to social service and inclusive development, and registered under the Indian Societies Registration Act, 1860, creating a strong legal and governance framework for structured social interventions.',
+    },
+    {
+      year: '2017',
+      title: 'Community Outreach & Education',
+      description:
+        'Grassroots programs were initiated to support underprivileged children through distribution of study materials and awareness activities highlighting the importance of education.',
+    },
+    {
+      year: '2018',
+      title: 'Healthcare & Social Awareness',
+      description:
+        'Healthcare initiatives expanded via health awareness camps, hygiene promotion, and community outreach efforts to improve basic health indicators among vulnerable populations.',
+    },
+    {
+      year: '2019',
+      title: 'Employment & Skill Development',
+      description:
+        'Employment-oriented and skill development initiatives were launched to promote self-reliance and income generation opportunities for youth and women.',
+    },
+    {
+      year: '2020',
+      title: 'COVID-19 & Disaster Relief',
+      description:
+        'During the COVID-19 pandemic, the foundation led relief efforts including distribution of essential supplies, food support, and emergency community assistance.',
+    },
+    {
+      year: '2021',
+      title: 'Flood Relief & Rehabilitation',
+      description:
+        'Flood relief and rehabilitation activities were carried out to provide immediate support and long-term assistance to communities affected by natural calamities.',
+    },
+    {
+      year: '2022',
+      title: 'Women Empowerment & Capacity Building',
+      description:
+        'Focused programs for women empowerment were implemented, covering skill training, awareness on rights and health, and promotion of financial independence.',
+    },
+    {
+      year: '2023',
+      title: 'Environmental Protection & Sustainability',
+      description:
+        'The foundation expanded into environmental protection through tree plantation drives, cleanliness campaigns, and awareness programs on environmental conservation.',
+    },
+    {
+      year: '2024',
+      title: 'Institutional Strengthening & Partnerships',
+      description:
+        'Organizational capacity building was prioritized by strengthening internal processes, documentation, and establishing partnerships with CSR organizations, government agencies, and like-minded institutions.',
+    },
+    {
+      year: '2025',
+      title: 'Scaling Impact & CSR Alignment',
+      description:
+        'The foundation aims to scale its programs, enhance impact measurement, and align initiatives with CSR frameworks, government schemes, and Sustainable Development Goals (SDGs) to create long-term, measurable social impact.',
+    },
+  ];
+  
+
 
 const values = [
   { title: 'Seva', sanskrit: 'सेवा', description: 'Selfless service at the heart of everything we do.' },
@@ -25,31 +82,47 @@ const About: React.FC = () => {
     <>
       <Helmet>
         <title>About Us - Our Story & Mission | Seva Samarpit Foundation</title>
-        <meta name="description" content="Discover Seva Samarpit Foundation's 15-year journey of compassion. Learn about our mission, values of Seva, Satya, Sankalp, and Sahyog, and milestones transforming India." />
-        <meta name="keywords" content="about Seva Samarpit, NGO history, nonprofit mission, Indian charity story, seva values, volunteer organization" />
+        <meta
+          name="description"
+          content="Discover Seva Samarpit Foundation's 15-year journey of compassion. Learn about our mission, values of Seva, Satya, Sankalp, and Sahyog, and milestones transforming India."
+        />
+        <meta
+          name="keywords"
+          content="about Seva Samarpit, NGO history, nonprofit mission, Indian charity story, seva values, volunteer organization"
+        />
         <link rel="canonical" href="https://sevasamarpit.org/about" />
-        
-        <meta property="og:title" content="About Seva Samarpit Foundation - 15 Years of Compassion" />
-        <meta property="og:description" content="Discover our journey from a small group of passionate individuals to a foundation transforming 50,000+ lives across 120 villages." />
+
+        <meta
+          property="og:title"
+          content="About Seva Samarpit Foundation - 15 Years of Compassion"
+        />
+        <meta
+          property="og:description"
+          content="Discover our journey from a small group of passionate individuals to a foundation transforming 50,000+ lives across 120 villages."
+        />
         <meta property="og:url" content="https://sevasamarpit.org/about" />
         <meta property="og:type" content="website" />
-        
+
         <meta name="twitter:title" content="About Seva Samarpit Foundation" />
-        <meta name="twitter:description" content="15 years of compassionate service across India. Our story of transformation." />
-        
+        <meta
+          name="twitter:description"
+          content="15 years of compassionate service across India. Our story of transformation."
+        />
+
         <script type="application/ld+json">
           {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "AboutPage",
-            "name": "About Seva Samarpit Foundation",
-            "description": "Learn about our 15-year journey of compassion and service across India.",
-            "url": "https://sevasamarpit.org/about",
-            "mainEntity": {
-              "@type": "NGO",
-              "name": "Seva Samarpit Foundation",
-              "foundingDate": "2009",
-              "foundingLocation": "New Delhi, India"
-            }
+            '@context': 'https://schema.org',
+            '@type': 'AboutPage',
+            name: 'About Seva Samarpit Foundation',
+            description:
+              "Learn about our 15-year journey of compassion and service across India.",
+            url: 'https://sevasamarpit.org/about',
+            mainEntity: {
+              '@type': 'NGO',
+              name: 'Seva Samarpit Foundation',
+              foundingDate: '2009',
+              foundingLocation: 'New Delhi, India',
+            },
           })}
         </script>
       </Helmet>
@@ -62,7 +135,7 @@ const About: React.FC = () => {
           <div className="absolute top-0 right-0 text-primary pointer-events-none">
             <MandalaPattern size={500} opacity={0.06} />
           </div>
-          
+
           <div className="container mx-auto px-6 relative z-10">
             <span className="inline-block text-accent font-body text-sm tracking-[0.3em] uppercase mb-4">
               Our Story
@@ -73,7 +146,7 @@ const About: React.FC = () => {
               <span className="text-primary">Compassion</span>
             </h1>
             <p className="max-w-2xl text-lg text-muted-foreground">
-              For over 15 years, Seva Samarpit Foundation has woven threads of hope, 
+              For over 15 years, Seva Samarpit Foundation has woven threads of hope,
               service, and transformation across the fabric of rural India.
             </p>
           </div>
@@ -102,10 +175,63 @@ const About: React.FC = () => {
                       {value.sanskrit}
                     </span>
                   </div>
-                  <h3 className="font-heading text-2xl text-foreground mb-3">{value.title}</h3>
+                  <h3 className="font-heading text-2xl text-foreground mb-3">
+                    {value.title}
+                  </h3>
                   <p className="text-muted-foreground">{value.description}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Mission & Vision Section */}
+        <section className="py-20 bg-muted">
+          <div className="container mx-auto px-6">
+            <div className="text-center mb-12">
+              <span className="inline-block text-accent font-body text-sm tracking-[0.3em] uppercase mb-4">
+                Purpose & Direction
+              </span>
+              <h2 className="font-heading text-4xl md:text-5xl text-foreground">
+                Mission & Vision
+              </h2>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-12">
+              {/* Mission */}
+              <div className="p-8 rounded-3xl bg-card shadow-soft">
+                <h3 className="font-heading text-2xl text-primary mb-4">Mission</h3>
+                <p className="text-muted-foreground mb-4">
+                  The mission of Seva Samarpit Foundation is to contribute to inclusive
+                  and sustainable development by implementing need-based, scalable, and
+                  community-driven interventions in the areas of education, healthcare,
+                  livelihood and employment generation, disaster and flood relief,
+                  environmental protection, and women empowerment.
+                </p>
+                <p className="text-muted-foreground">
+                  The foundation is committed to strengthening social infrastructure,
+                  improving access to essential services, and supporting vulnerable
+                  populations through transparent, accountable, and outcome-oriented
+                  programs aligned with national development goals and CSR priorities.
+                </p>
+              </div>
+
+              {/* Vision */}
+              <div className="p-8 rounded-3xl bg-card shadow-soft">
+                <h3 className="font-heading text-2xl text-primary mb-4">Vision</h3>
+                <p className="text-muted-foreground mb-4">
+                  The vision of Seva Samarpit Foundation is to create an equitable,
+                  resilient, and self-reliant society where individuals and communities
+                  have equal opportunities to grow socially and economically.
+                </p>
+                <p className="text-muted-foreground">
+                  The foundation envisions contributing to national priorities by
+                  promoting human development, empowering women, enhancing
+                  environmental sustainability, strengthening disaster preparedness, and
+                  fostering long-term social impact through partnerships with government
+                  bodies, CSR institutions, and other stakeholders.
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -134,12 +260,20 @@ const About: React.FC = () => {
                   }`}
                 >
                   {/* Content */}
-                  <div className={`flex-1 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                    <span className="text-accent font-heading text-2xl">{item.year}</span>
+                  <div
+                    className={`flex-1 ${
+                      index % 2 === 0 ? 'md:text-right' : 'md:text-left'
+                    }`}
+                  >
+                    <span className="text-accent font-heading text-2xl">
+                      {item.year}
+                    </span>
                     <h3 className="font-heading text-xl text-primary-foreground mt-2 mb-2">
                       {item.title}
                     </h3>
-                    <p className="text-primary-foreground/70">{item.description}</p>
+                    <p className="text-primary-foreground/70">
+                      {item.description}
+                    </p>
                   </div>
 
                   {/* Circle Marker */}
@@ -169,17 +303,17 @@ const About: React.FC = () => {
                   <span className="text-primary">of Humanity</span>
                 </h2>
                 <p className="text-lg text-muted-foreground mb-6">
-                  We believe that true development is circular—what we give returns 
-                  multiplied. Our mission is to create sustainable change that 
-                  empowers communities to become agents of their own transformation.
+                  We believe that true development is circular—what we give returns
+                  multiplied. Our mission is to create sustainable change that empowers
+                  communities to become agents of their own transformation.
                 </p>
                 <p className="text-muted-foreground">
-                  Through healthcare, education, environmental conservation, and 
-                  economic empowerment, we work alongside communities to break 
-                  cycles of poverty and ignite cycles of progress.
+                  Through healthcare, education, environmental conservation, and
+                  economic empowerment, we work alongside communities to break cycles
+                  of poverty and ignite cycles of progress.
                 </p>
               </div>
-              
+
               <div className="relative">
                 <div className="aspect-square max-w-md mx-auto">
                   {/* Decorative circles */}

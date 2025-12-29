@@ -80,14 +80,7 @@ const HeroSection: React.FC = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <div 
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float"
-          style={{ animationDelay: '1s' }}
-        >
-          <div className="w-8 h-12 rounded-full border-2 border-primary/30 flex items-start justify-center p-2">
-            <div className="w-1.5 h-3 rounded-full bg-primary/50 animate-bounce" />
-          </div>
-        </div>
+       
       </div>
     </section>
   );
