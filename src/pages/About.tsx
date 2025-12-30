@@ -5,70 +5,67 @@ import Footer from '@/components/Footer';
 import MandalaPattern from '@/components/MandalaPattern';
 
 const timeline = [
-
-    {
-      year: '2016',
-      title: 'Foundation & Registration',
-      description:
-        'Seva Samarpit Foundation was established with a commitment to social service and inclusive development, and registered under the Indian Societies Registration Act, 1860, creating a strong legal and governance framework for structured social interventions.',
-    },
-    {
-      year: '2017',
-      title: 'Community Outreach & Education',
-      description:
-        'Grassroots programs were initiated to support underprivileged children through distribution of study materials and awareness activities highlighting the importance of education.',
-    },
-    {
-      year: '2018',
-      title: 'Healthcare & Social Awareness',
-      description:
-        'Healthcare initiatives expanded via health awareness camps, hygiene promotion, and community outreach efforts to improve basic health indicators among vulnerable populations.',
-    },
-    {
-      year: '2019',
-      title: 'Employment & Skill Development',
-      description:
-        'Employment-oriented and skill development initiatives were launched to promote self-reliance and income generation opportunities for youth and women.',
-    },
-    {
-      year: '2020',
-      title: 'COVID-19 & Disaster Relief',
-      description:
-        'During the COVID-19 pandemic, the foundation led relief efforts including distribution of essential supplies, food support, and emergency community assistance.',
-    },
-    {
-      year: '2021',
-      title: 'Flood Relief & Rehabilitation',
-      description:
-        'Flood relief and rehabilitation activities were carried out to provide immediate support and long-term assistance to communities affected by natural calamities.',
-    },
-    {
-      year: '2022',
-      title: 'Women Empowerment & Capacity Building',
-      description:
-        'Focused programs for women empowerment were implemented, covering skill training, awareness on rights and health, and promotion of financial independence.',
-    },
-    {
-      year: '2023',
-      title: 'Environmental Protection & Sustainability',
-      description:
-        'The foundation expanded into environmental protection through tree plantation drives, cleanliness campaigns, and awareness programs on environmental conservation.',
-    },
-    {
-      year: '2024',
-      title: 'Institutional Strengthening & Partnerships',
-      description:
-        'Organizational capacity building was prioritized by strengthening internal processes, documentation, and establishing partnerships with CSR organizations, government agencies, and like-minded institutions.',
-    },
-    {
-      year: '2025',
-      title: 'Scaling Impact & CSR Alignment',
-      description:
-        'The foundation aims to scale its programs, enhance impact measurement, and align initiatives with CSR frameworks, government schemes, and Sustainable Development Goals (SDGs) to create long-term, measurable social impact.',
-    },
-  ];
-  
-
+  {
+    year: '2016',
+    title: 'Foundation & Registration',
+    description:
+      'Seva Samarpit Foundation was established with a commitment to social service and inclusive development, and registered under the Indian Societies Registration Act, 1860, creating a strong legal and governance framework for structured social interventions.',
+  },
+  {
+    year: '2017',
+    title: 'Community Outreach & Education',
+    description:
+      'Grassroots programs were initiated to support underprivileged children through distribution of study materials and awareness activities highlighting the importance of education.',
+  },
+  {
+    year: '2018',
+    title: 'Healthcare & Social Awareness',
+    description:
+      'Healthcare initiatives expanded via health awareness camps, hygiene promotion, and community outreach efforts to improve basic health indicators among vulnerable populations.',
+  },
+  {
+    year: '2019',
+    title: 'Employment & Skill Development',
+    description:
+      'Employment-oriented and skill development initiatives were launched to promote self-reliance and income generation opportunities for youth and women.',
+  },
+  {
+    year: '2020',
+    title: 'COVID-19 & Disaster Relief',
+    description:
+      'During the COVID-19 pandemic, the foundation led relief efforts including distribution of essential supplies, food support, and emergency community assistance.',
+  },
+  {
+    year: '2021',
+    title: 'Flood Relief & Rehabilitation',
+    description:
+      'Flood relief and rehabilitation activities were carried out to provide immediate support and long-term assistance to communities affected by natural calamities.',
+  },
+  {
+    year: '2022',
+    title: 'Women Empowerment & Capacity Building',
+    description:
+      'Focused programs for women empowerment were implemented, covering skill training, awareness on rights and health, and promotion of financial independence.',
+  },
+  {
+    year: '2023',
+    title: 'Environmental Protection & Sustainability',
+    description:
+      'The foundation expanded into environmental protection through tree plantation drives, cleanliness campaigns, and awareness programs on environmental conservation.',
+  },
+  {
+    year: '2024',
+    title: 'Institutional Strengthening & Partnerships',
+    description:
+      'Organizational capacity building was prioritized by strengthening internal processes, documentation, and establishing partnerships with CSR organizations, government agencies, and like-minded institutions.',
+  },
+  {
+    year: '2025',
+    title: 'Scaling Impact & CSR Alignment',
+    description:
+      'The foundation aims to scale its programs, enhance impact measurement, and align initiatives with CSR frameworks, government schemes, and Sustainable Development Goals (SDGs) to create long-term, measurable social impact.',
+  },
+];
 
 const values = [
   { title: 'Seva', sanskrit: 'सेवा', description: 'Selfless service at the heart of everything we do.' },
@@ -84,7 +81,7 @@ const About: React.FC = () => {
         <title>About Us - Our Story & Mission | Seva Samarpit Foundation</title>
         <meta
           name="description"
-          content="Discover Seva Samarpit Foundation's 15-year journey of compassion. Learn about our mission, values of Seva, Satya, Sankalp, and Sahyog, and milestones transforming India."
+          content="Discover Seva Samarpit Foundation's journey of compassion. Learn about our mission, values of Seva, Satya, Sankalp, and Sahyog, and milestones transforming communities."
         />
         <meta
           name="keywords"
@@ -94,11 +91,11 @@ const About: React.FC = () => {
 
         <meta
           property="og:title"
-          content="About Seva Samarpit Foundation - 15 Years of Compassion"
+          content="About Seva Samarpit Foundation - Journey of Compassion"
         />
         <meta
           property="og:description"
-          content="Discover our journey from a small group of passionate individuals to a foundation transforming 50,000+ lives across 120 villages."
+          content="Discover our journey from a dedicated group of social workers to a foundation working for education, healthcare, livelihood, women empowerment, and disaster relief."
         />
         <meta property="og:url" content="https://sevasamarpit.org/about" />
         <meta property="og:type" content="website" />
@@ -106,7 +103,7 @@ const About: React.FC = () => {
         <meta name="twitter:title" content="About Seva Samarpit Foundation" />
         <meta
           name="twitter:description"
-          content="15 years of compassionate service across India. Our story of transformation."
+          content="Years of compassionate service across India. Our story of social transformation."
         />
 
         <script type="application/ld+json">
@@ -115,13 +112,13 @@ const About: React.FC = () => {
             '@type': 'AboutPage',
             name: 'About Seva Samarpit Foundation',
             description:
-              "Learn about our 15-year journey of compassion and service across India.",
+              'Learn about our journey of compassion and service across India.',
             url: 'https://sevasamarpit.org/about',
             mainEntity: {
               '@type': 'NGO',
               name: 'Seva Samarpit Foundation',
-              foundingDate: '2009',
-              foundingLocation: 'New Delhi, India',
+              foundingDate: '2016',
+              foundingLocation: 'Patna, Bihar, India',
             },
           })}
         </script>
@@ -146,8 +143,28 @@ const About: React.FC = () => {
               <span className="text-primary">Compassion</span>
             </h1>
             <p className="max-w-2xl text-lg text-muted-foreground">
-              For over 15 years, Seva Samarpit Foundation has woven threads of hope,
-              service, and transformation across the fabric of rural India.
+              Since 2016, Seva Samarpit Foundation has been working with dedication and commitment to serve society through sustainable social development and community welfare.
+            </p>
+          </div>
+        </section>
+
+        {/* About NGO Text Section (added) */}
+        <section className="py-16 bg-background">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <h2 className="font-heading text-3xl md:text-4xl text-foreground mb-6">
+              About Seva Samarpit Foundation
+            </h2>
+            <p className="text-muted-foreground mb-4">
+              Seva Samarpit Foundation is a non-governmental organization established in 2016 with a vision to serve society through dedicated and selfless efforts. The foundation is registered under the Indian Societies Registration Act, 1860, and works towards sustainable social development and community welfare.
+            </p>
+            <p className="text-muted-foreground mb-4">
+              The organization is actively engaged in the fields of education, healthcare, employment generation, flood and disaster relief, environmental protection, and women empowerment. Through its programs and initiatives, Seva Samarpit Foundation strives to uplift underprivileged communities, promote awareness, and create opportunities for a better quality of life.
+            </p>
+            <p className="text-muted-foreground mb-4">
+              Under the leadership of President Mr. Sunil Kumar and Secretary Ms. Sonal Singh, the foundation has been guided by a strong commitment to social service and humanitarian values. Their leadership has played a key role in shaping the foundation’s mission to serve society with integrity, compassion, and dedication.
+            </p>
+            <p className="text-muted-foreground">
+              Driven by the principles of seva (service) and samarpan (dedication), Seva Samarpit Foundation continues to work towards building an inclusive, empowered, and socially responsible nation.
             </p>
           </div>
         </section>

@@ -64,6 +64,7 @@ import rural2 from '../assets/rural/rural1.jpeg';
 import rural3 from '../assets/rural/Rural2.jpeg';
 import water1 from '../assets/flood/flood1.jpeg';
 import water2 from '../assets/flood/flood2.jpeg';
+import water3 from '../assets/flood/flood3.jpeg';
 
 const programs = [
   {
@@ -93,7 +94,7 @@ const programs = [
     iconBg: 'bg-blue-500/10 text-blue-600',
     details: {
       overview: 'Quality education for underprivileged children.',
-      images: [education1, education2],
+      images: [education1, education2,education3],
       impact: '5K+ students in 25 learning centers',
       activities: ['Scholarships', 'Digital literacy', 'Learning centers']
     }
@@ -125,7 +126,7 @@ const programs = [
     iconBg: 'bg-green-500/10 text-green-600',
     details: {
       overview: 'Sustainable environment for future generations.',
-      images: [environment1, environment2],
+      images: [environment1, environment2,environment3],
       impact: '100K+ trees across 30 districts',
       activities: ['Tree drives', 'Sustainable farming', 'Awareness']
     }
@@ -141,7 +142,7 @@ const programs = [
     iconBg: 'bg-amber-500/10 text-amber-600',
     details: {
       overview: 'Transforming rural infrastructure.',
-      images: [rural1, rural2, rural3],
+      images: [rural1, rural2, rural3,],
       impact: '120+ villages with new facilities',
       activities: ['Roads', 'Community halls', 'Livelihood']
     }
@@ -157,7 +158,7 @@ const programs = [
     iconBg: 'bg-blue-500/10 text-blue-600',
     details: {
       overview: 'Immediate relief and long-term recovery for flood-hit regions.',
-      images: [water1, water2],
+      images: [water1, water2,water3],
       impact: '30+ operations supporting 15K+ affected people',
       activities: [
         'Rescue & Evacuation',

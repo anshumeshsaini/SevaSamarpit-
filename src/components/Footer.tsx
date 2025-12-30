@@ -40,22 +40,26 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h4 className="font-heading text-lg mb-6">Quick Links</h4>
-            <ul className="space-y-3">
-              {['About Us', 'Our Work', 'Impact Stories', 'Get Involved'].map((item) => (
-                <li key={item}>
-                  <Link
-                    to={`/${item.toLowerCase().replace(' ', '-')}`}
-                    className="text-primary-foreground/70 hover:text-accent transition-colors text-sm"
-                  >
-                    {item}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+  <h4 className="font-heading text-lg mb-6">Quick Links</h4>
+  <ul className="space-y-3">
+    {[
+      { label: 'About Us', path: '/about' },
+      { label: 'Our Work', path: '/our-work' },
+      { label: 'Impact Stories', path: '/impact' },
+      { label: 'Get Involved', path: '/get-involved' }
+    ].map(({ label, path }) => (
+      <li key={label}>
+        <Link
+          to={path}
+          className="text-primary-foreground/70 hover:text-accent transition-colors text-sm"
+        >
+          {label}
+        </Link>
+      </li>
+    ))}
+  </ul>
+</div>
 
           {/* Programs */}
           <div>

@@ -13,8 +13,8 @@ import team9 from '@/assets/team/team9.jpeg';
 
 const teamMembers = [
   {
-    name: 'सुनील कुमार राष्ट्रीय अध्यक्ष',
-    role: 'President & Founder',
+    name: 'सुनील कुमार ',
+    role: 'राष्ट्रीय अध्यक्ष',
     bio: 'राष्ट्रीय अध्यक्ष के रूप में दर्शनशील नेतृत्व। 2016 में सेवा समर्पित फाउंडेशन की स्थापना की। सामाजिक सेवा में 15+ वर्षों का अनुभव।',
     image: team1,
     location: 'Patna, Bihar',
