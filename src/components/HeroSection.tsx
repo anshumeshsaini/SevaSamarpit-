@@ -53,12 +53,21 @@ const HeroSection: React.FC = () => {
           <span className="text-primary">Foundation</span>
         </h1>
 
+        {/* Updated main description with foundation content */}
         <p 
-          className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground mb-12 font-body animate-fade-in-up"
+          className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground mb-8 font-body animate-fade-in-up"
           style={{ animationDelay: '0.4s' }}
         >
-          Where giving meets purpose. Join our circle of service and create ripples 
-          of change that touch countless lives across India.
+          Established in 2016, registered under the Indian Societies Registration Act, 1860. 
+          Dedicated to sustainable social development through education, healthcare, employment, 
+          disaster relief, environment protection, and women empowerment.
+        </p>
+
+        {/* Leadership mention */}
+        <p className="max-w-xl mx-auto text-base text-muted-foreground/80 mb-12 font-body animate-fade-in-up" 
+           style={{ animationDelay: '0.5s' }}>
+          Guided by President Mr. Sunil Kumar and Secretary Ms. Sonal Singh, driven by principles 
+          of <em>seva</em> (service) and <em>samarpan</em> (dedication) to uplift underprivileged communities.
         </p>
 
         {/* CTA Buttons */}
@@ -66,21 +75,24 @@ const HeroSection: React.FC = () => {
           className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up"
           style={{ animationDelay: '0.6s' }}
         >
-          <Button variant="hero" asChild>
+          <Button variant="hero" asChild size="lg">
             <Link to="/donate">
-              Complete the Circle
-              <ArrowRight className="ml-2" />
+              Complete the Circle of Service
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
-          <Button variant="heroOutline" asChild>
+          <Button variant="heroOutline" asChild size="lg">
             <Link to="/our-work">
-              Explore Our Work
+              Discover Our Impact
             </Link>
           </Button>
         </div>
 
-        {/* Scroll Indicator */}
-       
+        {/* Mission tagline */}
+        <p className="mt-8 text-xs uppercase tracking-widest text-muted-foreground font-medium animate-fade-in-up" 
+           style={{ animationDelay: '0.7s' }}>
+          Building an inclusive, empowered, socially responsible nation
+        </p>
       </div>
     </section>
   );
