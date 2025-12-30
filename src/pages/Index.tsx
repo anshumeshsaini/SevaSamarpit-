@@ -6,6 +6,7 @@ import StatsSection from '@/components/StatsSection';
 import RadialPrograms from '@/components/RadialPrograms';
 import ImpactStories from '@/components/ImpactStories';
 import DonationCircle from '@/components/DonationCircle';
+import TributeSection from '@/components/TributeSection';
 
 import Footer from '@/components/Footer';
 
@@ -91,6 +92,7 @@ const Index: React.FC = () => {
       
       <main>
         <HeroSection />
+        <TributeSection />
         <StatsSection />
         <RadialPrograms />
         <ImpactStories />
