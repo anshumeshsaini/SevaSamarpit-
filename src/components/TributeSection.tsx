@@ -43,7 +43,7 @@ const TributeSection: React.FC = () => {
                 
                 {/* Decorative badge */}
                 <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-deep-green text-sand px-6 py-2 rounded-full text-sm font-medium shadow-lg">
-                  1945 - Forever in Our Hearts
+                  2012 - Forever in Our Hearts
                 </div>
               </div>
             </div>
