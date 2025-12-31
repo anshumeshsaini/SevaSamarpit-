@@ -1,10 +1,10 @@
 import React from 'react';
 
 const stats = [
-  { value: '50,000+', label: 'Lives Transformed' },
-  { value: '120+', label: 'Villages Reached' },
-  { value: '15', label: 'Years of Service' },
-  { value: '2,500+', label: 'Active Volunteers' },
+  { value: '20,000+', label: 'Lives Transformed' },
+  { value: '320+', label: 'Villages Reached' },
+  { value: '10', label: 'Years of Service' },
+  { value: '2,200+', label: 'Active Volunteers' },
 ];
 
 const StatsSection: React.FC = () => {
