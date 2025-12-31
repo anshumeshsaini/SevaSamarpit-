@@ -55,11 +55,11 @@ Submitted on: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
         <title>Contact Us - Reach Out to Seva Samarpit Foundation</title>
         <meta name="description" content="Contact Seva Samarpit Foundation in Patna, Bihar. Call +91 79924 81330, email sevasamarpitfoundaiton@gmail.com, or visit our office at Basudeo Vihar Apartment. We respond within 24 hours." />
         <meta name="keywords" content="contact NGO Patna, Seva Samarpit address, nonprofit Bihar, charity helpline, volunteer Patna, partnership contact" />
-        <link rel="canonical" href="https://sevasamarpit.org/contact" />
+        <link rel="canonical" href="https://www.sevasamarpitfoundation.in/contact" />
         
         <meta property="og:title" content="Contact Seva Samarpit Foundation" />
         <meta property="og:description" content="Get in touch with us in Patna, Bihar. We're here to answer your questions and welcome you to our circle of seva." />
-        <meta property="og:url" content="https://sevasamarpit.org/contact" />
+        <meta property="og:url" content="https://www.sevasamarpitfoundation.in/contact" />
         <meta property="og:type" content="website" />
         
         <meta name="twitter:title" content="Contact Us | Seva Samarpit Foundation" />
@@ -71,7 +71,7 @@ Submitted on: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
             "@type": "ContactPage",
             "name": "Contact Seva Samarpit Foundation",
             "description": "Get in touch with our team for inquiries, partnerships, or volunteer opportunities.",
-            "url": "https://sevasamarpit.org/contact",
+            "url": "https://www.sevasamarpitfoundation.in/contact",
             "mainEntity": {
               "@type": "Organization",
               "name": "Seva Samarpit Foundation",

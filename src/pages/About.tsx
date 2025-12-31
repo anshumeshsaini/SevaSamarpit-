@@ -87,7 +87,7 @@ const About: React.FC = () => {
           name="keywords"
           content="about Seva Samarpit, NGO history, nonprofit mission, Indian charity story, seva values, volunteer organization"
         />
-        <link rel="canonical" href="https://sevasamarpit.org/about" />
+        <link rel="canonical" href="https://www.sevasamarpitfoundation.in/about" />
 
         <meta
           property="og:title"
@@ -97,7 +97,7 @@ const About: React.FC = () => {
           property="og:description"
           content="Discover our journey from a dedicated group of social workers to a foundation working for education, healthcare, livelihood, women empowerment, and disaster relief."
         />
-        <meta property="og:url" content="https://sevasamarpit.org/about" />
+        <meta property="og:url" content="https://www.sevasamarpitfoundation.in/about" />
         <meta property="og:type" content="website" />
 
         <meta name="twitter:title" content="About Seva Samarpit Foundation" />
@@ -108,12 +108,12 @@ const About: React.FC = () => {
 
         <script type="application/ld+json">
           {JSON.stringify({
-            '@context': 'https://schema.org',
+            '@context': 'https://schema.in',
             '@type': 'AboutPage',
             name: 'About Seva Samarpit Foundation',
             description:
               'Learn about our journey of compassion and service across India.',
-            url: 'https://sevasamarpit.org/about',
+            url: 'https://www.sevasamarpitfoundation.in/about',
             mainEntity: {
               '@type': 'NGO',
               name: 'Seva Samarpit Foundation',

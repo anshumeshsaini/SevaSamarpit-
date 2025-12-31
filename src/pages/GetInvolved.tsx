@@ -97,11 +97,11 @@ Seva Samarpit Foundation Application
         <title>Get Involved - Volunteer, Partner & Fundraise | Seva Samarpit Foundation</title>
         <meta name="description" content="Join 2,500+ volunteers making a difference. Volunteer opportunities, corporate CSR partnerships, fundraising campaigns, and community events across India." />
         <meta name="keywords" content="volunteer India, NGO volunteering, CSR partnership, fundraise for charity, community events, social work opportunities" />
-        <link rel="canonical" href="https://sevasamarpit.org/get-involved" />
+        <link rel="canonical" href="https://www.sevasamarpitfoundation.in/get-involved" />
         
         <meta property="og:title" content="Get Involved - Be the Change You Wish to See" />
         <meta property="og:description" content="Multiple ways to join our circle of seva: volunteer, partner, fundraise, or participate in events." />
-        <meta property="og:url" content="https://sevasamarpit.org/get-involved" />
+        <meta property="og:url" content="https://www.sevasamarpitfoundation.in/get-involved" />
         <meta property="og:type" content="website" />
         
         <meta name="twitter:title" content="Get Involved | Seva Samarpit Foundation" />
@@ -109,11 +109,11 @@ Seva Samarpit Foundation Application
         
         <script type="application/ld+json">
           {JSON.stringify({
-            "@context": "https://schema.org",
+            "@context": "https://schema.in",
             "@type": "WebPage",
             "name": "Get Involved",
             "description": "Join our circle of seva through volunteering, partnerships, fundraising, or events.",
-            "url": "https://sevasamarpit.org/get-involved",
+            "url": "https://www.sevasamarpitfoundation.in/get-involved",
             "mainEntity": {
               "@type": "ItemList",
               "itemListElement": [

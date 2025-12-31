@@ -75,10 +75,10 @@ const Index: React.FC = () => {
         {/* Structured Data - WebSite with Search */}
         <script type="application/ld+json">
           {JSON.stringify({
-            "@context": "https://schema.org",
+            "@context": "https://schema.in",
             "@type": "WebSite",
             "name": "Seva Samarpit Foundation",
-            "url": "https://sevasamarpit.org",
+            "url": "https://www.sevasamarpitfoundation.in/",
             "potentialAction": {
               "@type": "SearchAction",
               "target": "https://sevasamarpitfoundation.in/search?q={search_term_string}",

@@ -220,7 +220,7 @@ const OurWork: React.FC = () => {
         <title>Our Programs & News - Seva Samarpit Foundation</title>
         <meta name="description" content="Explore our 6 impactful programs and 37 latest news cuttings from Healthcare, Education, Women Empowerment, Environment, Rural Development & Clean Water initiatives." />
         <meta name="keywords" content="NGO India programs, NGO news cuttings Bihar, Seva Samarpit Foundation news, rural development Bihar" />
-        <link rel="canonical" href="https://sevasamarpit.org/our-work" />
+        <link rel="canonical" href="https://www.sevasamarpitfoundation.in/our-work" />
       </Helmet>
 
       <CircularNav />
