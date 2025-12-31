@@ -7,7 +7,7 @@ const navItems = [
   { label: 'Home', path: '/' },
   { label: 'About', path: '/about' },
   { label: 'Our Work', path: '/our-work' },
-  { label: 'Impact', path: '/impact' },
+  { label: 'Core Committee', path: '/impact' },
   { label: 'Donate', path: '/donate' },
   { label: 'Get Involved', path: '/get-involved' },
   { label: 'Contact', path: '/contact' },
@@ -17,6 +17,11 @@ const CircularNav: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const overlayRef = useRef<HTMLDivElement>(null);
+
+  // ✅ FIXED: Scroll to top on route change (iOS Safari fix)
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [location.pathname]);
 
   // Handle click outside to close
   useEffect(() => {
@@ -28,7 +33,6 @@ const CircularNav: React.FC = () => {
 
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
-      // Prevent background scrolling when menu is open
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
@@ -50,10 +54,15 @@ const CircularNav: React.FC = () => {
     return () => document.removeEventListener('keydown', handleEscape);
   }, []);
 
-  // Close menu when route changes
-  useEffect(() => {
+  // ✅ FIXED: Scroll to top + Close menu on route change
+  const handleNavClick = (path: string) => {
     setIsOpen(false);
-  }, [location.pathname]);
+    // Double scroll for iOS Safari reliability
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }, 100);
+  };
 
   return (
     <>
@@ -71,16 +80,15 @@ const CircularNav: React.FC = () => {
       <Link 
         to="/" 
         className="fixed top-6 left-6 z-50 flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-accent rounded-lg p-1"
-        onClick={() => setIsOpen(false)}
+        onClick={handleNavClick}
       >
-       <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center shadow-soft group-hover:shadow-elevated transition-shadow">
-  <img
-    src={logo}
-    alt="logo"
-    className="w-10 h-10 object-contain"
-  />
-</div>
-
+        <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center shadow-soft group-hover:shadow-elevated transition-shadow">
+          <img
+            src={logo}
+            alt="Seva Samarpit Foundation"
+            className="w-10 h-10 object-contain"
+          />
+        </div>
         <span className="hidden md:block font-heading text-lg text-foreground">
           Seva Samarpit
         </span>
@@ -104,7 +112,7 @@ const CircularNav: React.FC = () => {
         {/* Circular Navigation Items */}
         <nav 
           className="absolute inset-0 flex items-center justify-center"
-          onClick={(e) => e.stopPropagation()} // Prevent click from bubbling to background
+          onClick={(e) => e.stopPropagation()}
         >
           <div className="relative w-[500px] h-[500px] max-w-[90vw] max-h-[90vh]">
             {/* Center decoration */}
@@ -125,7 +133,7 @@ const CircularNav: React.FC = () => {
                 <div
                   key={item.path}
                   className={`absolute top-1/2 left-1/2 transition-all duration-500 ${
-                    isOpen ? 'opacity-100' : 'opacity-0'
+                    isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
                   }`}
                   style={{
                     transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
@@ -134,11 +142,11 @@ const CircularNav: React.FC = () => {
                 >
                   <Link
                     to={item.path}
-                    onClick={() => setIsOpen(false)}
-                    className={`block px-6 py-3 rounded-full font-heading text-lg whitespace-nowrap transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent ${
+                    onClick={() => handleNavClick(item.path)}
+                    className={`block px-6 py-3 rounded-full font-heading text-lg whitespace-nowrap transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent hover:scale-110 ${
                       isActive
-                        ? 'bg-accent text-accent-foreground shadow-gold'
-                        : 'bg-primary/10 text-primary-foreground hover:bg-accent/20 hover:text-accent'
+                        ? 'bg-accent text-accent-foreground shadow-gold shadow-lg'
+                        : 'bg-primary/10 text-primary-foreground hover:bg-accent/20 hover:text-accent hover:shadow-elevated'
                     }`}
                     aria-current={isActive ? "page" : undefined}
                   >

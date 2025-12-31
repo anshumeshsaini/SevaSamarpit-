@@ -22,8 +22,9 @@ const Donate: React.FC = () => {
   const [circleProgress, setCircleProgress] = useState(0);
   const [donationType, setDonationType] = useState<'one-time' | 'monthly'>('one-time');
 
-  const finalAmount = customAmount ? parseInt(customAmount) : selectedAmount;
+  const finalAmount = customAmount ? parseInt(customAmount) || 0 : selectedAmount;
 
+  // ✅ FIXED: iOS Safari Compatible UPI Launch
   const handleDonate = async () => {
     if (!finalAmount || finalAmount < 10) {
       toast.error("Please enter a valid donation amount (minimum ₹10)");
@@ -50,37 +51,79 @@ const Donate: React.FC = () => {
     // Simulate processing time
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
-    // Generate UPI payment link
-    const note =
-      donationType === 'monthly'
-        ? 'Monthly Seva Donation'
-        : 'One-time Seva Donation';
-    
-    const upiLink = `upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(
-      PAYEE_NAME
-    )}&am=${finalAmount}&cu=INR&tn=${encodeURIComponent(note)}`;
+    const note = donationType === 'monthly' ? 'Monthly Seva Donation' : 'One-time Seva Donation';
+    const upiLink = `upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(PAYEE_NAME)}&am=${finalAmount}&cu=INR&tn=${encodeURIComponent(note)}`;
 
-    // Open UPI app
-    window.location.href = upiLink;
+    // ✅ iOS Safari Compatible UPI Launch (3-Step Fallback)
+    try {
+      // Method 1: Hidden Iframe (Best for iOS Safari)
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.style.width = '0';
+      iframe.style.height = '0';
+      iframe.src = upiLink;
+      document.body.appendChild(iframe);
 
-    toast.success(
-      "Redirecting to payment... If UPI app doesn't open, please use the UPI ID directly.",
-      { duration: 5000 }
-    );
+      setTimeout(() => {
+        document.body.removeChild(iframe);
 
-    setIsProcessing(false);
-    setCircleProgress(0);
+        // Method 2: Hidden Anchor Click
+        const anchor = document.createElement('a');
+        anchor.href = upiLink;
+        anchor.style.display = 'none';
+        anchor.target = '_blank';
+        document.body.appendChild(anchor);
+        anchor.click();
+        document.body.removeChild(anchor);
+
+        // Method 3: Window Open Fallback
+        setTimeout(() => {
+          window.open(upiLink, '_self');
+        }, 500);
+      }, 1000);
+
+      toast.success(
+        "Opening UPI app... Use UPI ID below if app doesn't open automatically.",
+        { duration: 6000 }
+      );
+    } catch (error) {
+      console.error('UPI Launch Error:', error);
+      toast.error("Payment redirect failed. Please copy UPI ID and pay manually.");
+    }
+
+    // Reset UI after delay
+    setTimeout(() => {
+      setIsProcessing(false);
+      setCircleProgress(0);
+    }, 3000);
   };
 
-  const handleCopyUPI = () => {
-    navigator.clipboard.writeText(UPI_ID);
-    toast.success("UPI ID copied to clipboard!");
+  const handleCopyUPI = async () => {
+    try {
+      await navigator.clipboard.writeText(UPI_ID);
+      toast.success("UPI ID copied to clipboard! 📋");
+    } catch (err) {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = UPI_ID;
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      toast.success("UPI ID copied! 📋");
+    }
   };
 
   return (
     <>
       <Helmet>
         <title>Donate Now - Seva Samarpit Foundation</title>
+        <meta name="description" content="Support Seva Samarpit Foundation's mission to transform lives across India. Donate securely via UPI for education, healthcare, and community development." />
+        {/* ✅ iOS Safari Optimizations */}
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
       </Helmet>
 
       <CircularNav />
@@ -110,16 +153,16 @@ const Donate: React.FC = () => {
             <div className="grid lg:grid-cols-2 gap-12">
               {/* FORM */}
               <div className="space-y-8">
-                {/* Type */}
+                {/* Type Selection */}
                 <div className="flex gap-4">
-                  {['one-time', 'monthly'].map(type => (
+                  {['one-time', 'monthly'].map((type) => (
                     <button
                       key={type}
-                      onClick={() => setDonationType(type as any)}
-                      className={`flex-1 py-3 rounded-full transition ${
+                      onClick={() => setDonationType(type as 'one-time' | 'monthly')}
+                      className={`flex-1 py-3 rounded-full transition-all duration-200 font-medium ${
                         donationType === type
-                          ? 'bg-primary text-primary-foreground'
-                          : 'bg-muted'
+                          ? 'bg-primary text-primary-foreground shadow-md shadow-primary/25'
+                          : 'bg-muted hover:bg-muted-foreground/20'
                       }`}
                     >
                       {type === 'monthly' ? 'Monthly Seva' : 'One-time Gift'}
@@ -136,14 +179,15 @@ const Donate: React.FC = () => {
                     {donationAmounts.map((amount) => (
                       <button
                         key={amount}
+                        type="button"
                         onClick={() => {
                           setSelectedAmount(amount);
                           setCustomAmount('');
                         }}
-                        className={`p-4 rounded-xl font-semibold transition-all duration-300 ${
+                        className={`p-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 ${
                           selectedAmount === amount && !customAmount
-                            ? "bg-accent text-accent-foreground shadow-gold"
-                            : "bg-card border border-border hover:border-accent"
+                            ? "bg-accent text-accent-foreground shadow-gold shadow-lg"
+                            : "bg-card border-2 border-border hover:border-accent hover:shadow-md"
                         }`}
                       >
                         ₹{amount.toLocaleString()}
@@ -152,13 +196,14 @@ const Donate: React.FC = () => {
                   </div>
                   <input
                     type="number"
-                    placeholder="Or enter custom amount"
+                    min="10"
+                    placeholder="Or enter custom amount (₹10+)"
                     value={customAmount}
                     onChange={(e) => {
                       setCustomAmount(e.target.value);
-                      setSelectedAmount(0);
+                      if (e.target.value) setSelectedAmount(0);
                     }}
-                    className="w-full p-4 rounded-xl bg-card border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
+                    className="w-full p-4 rounded-xl bg-card border-2 border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-lg font-semibold"
                   />
                 </div>
 
@@ -172,22 +217,22 @@ const Donate: React.FC = () => {
                     placeholder="Your Name *"
                     value={donorName}
                     onChange={(e) => setDonorName(e.target.value)}
-                    className="w-full p-4 rounded-xl bg-card border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
+                    className="w-full p-4 rounded-xl bg-card border-2 border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-lg"
                     required
                   />
                   <input
                     type="email"
-                    placeholder="Email Address"
+                    placeholder="Email Address (optional)"
                     value={donorEmail}
                     onChange={(e) => setDonorEmail(e.target.value)}
-                    className="w-full p-4 rounded-xl bg-card border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
+                    className="w-full p-4 rounded-xl bg-card border-2 border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-lg"
                   />
                   <input
                     type="tel"
-                    placeholder="Phone Number"
+                    placeholder="Phone Number (optional)"
                     value={donorPhone}
                     onChange={(e) => setDonorPhone(e.target.value)}
-                    className="w-full p-4 rounded-xl bg-card border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
+                    className="w-full p-4 rounded-xl bg-card border-2 border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-lg"
                   />
                 </div>
               </div>
@@ -216,19 +261,18 @@ const Donate: React.FC = () => {
                           stroke="currentColor"
                           strokeWidth="8"
                           strokeLinecap="round"
-                          className="text-accent transition-all duration-300"
+                          className="text-accent transition-all duration-300 ease-out"
                           strokeDasharray={440}
                           strokeDashoffset={440 - (440 * circleProgress) / 100}
                         />
                       </svg>
                       <div className="absolute inset-0 flex flex-col items-center justify-center">
                         {circleProgress === 100 ? (
-                          <CircleCheck className="h-12 w-12 text-accent" />
+                          <CircleCheck className="h-12 w-12 text-accent animate-pulse" />
                         ) : (
                           <>
-
                             <span className="font-heading text-2xl font-bold text-foreground">
-                              ₹{(finalAmount || 0).toLocaleString()}
+                              ₹{finalAmount.toLocaleString()}
                             </span>
                           </>
                         )}
@@ -247,53 +291,60 @@ const Donate: React.FC = () => {
                     <div className="flex justify-between py-3 border-b border-border">
                       <span className="text-muted-foreground">Amount</span>
                       <span className="font-heading text-xl font-bold text-accent">
-                        ₹{(finalAmount || 0).toLocaleString()}
+                        ₹{finalAmount.toLocaleString()}
                       </span>
                     </div>
                   </div>
 
                   {/* UPI Info */}
                   <div className="bg-muted/50 rounded-xl p-4 mb-6">
-                    <p className="text-sm text-muted-foreground mb-2">
+                    <p className="text-sm text-muted-foreground mb-2 font-medium">
                       Direct UPI Payment:
                     </p>
                     <div className="flex items-center justify-between">
-                      <code className="font-mono text-foreground">{UPI_ID}</code>
+                      <code className="font-mono text-foreground bg-muted px-2 py-1 rounded text-sm break-all">
+                        {UPI_ID}
+                      </code>
                       <button
                         onClick={handleCopyUPI}
-                        className="text-accent hover:text-accent/80 text-sm font-medium"
+                        className="text-accent hover:text-accent/80 text-sm font-medium px-3 py-1 rounded-md hover:bg-accent/10 transition-all duration-200"
+                        type="button"
                       >
                         Copy
                       </button>
                     </div>
                   </div>
 
-                  {/* Donate Button - Golden Color */}
+                  {/* Donate Button */}
                   <Button
-                    className="w-full bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-600 hover:to-amber-700 text-white font-bold py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                    className="w-full bg-gradient-to-r from-yellow-500 via-amber-500 to-orange-500 hover:from-yellow-600 hover:via-amber-600 hover:to-orange-600 text-white font-bold py-6 text-lg rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0"
                     onClick={handleDonate}
-                    disabled={isProcessing}
+                    disabled={isProcessing || !finalAmount}
                   >
                     {isProcessing ? (
-                      "Completing Circle..."
+                      <>
+                        <span>Completing Circle</span>
+                        <div className="ml-2 w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      </>
                     ) : donationType === 'monthly' ? (
                       <>
-
                         Start Monthly Seva
+                        <Heart className="ml-2 h-5 w-5" />
                       </>
                     ) : (
                       <>
-
-                        Donate ₹{(finalAmount || 0).toLocaleString()}
+                        Donate ₹{finalAmount.toLocaleString()}
+                        <Award className="ml-2 h-5 w-5" />
                       </>
                     )}
                   </Button>
 
                   {/* Trust Indicators */}
                   <div className="mt-6 flex items-center justify-center gap-4 text-sm text-muted-foreground">
-                   
-                   
-                   
+                    <Shield className="h-4 w-4" />
+                    <span>100% Secure UPI</span>
+                    <CheckCircle className="h-4 w-4" />
+                    <span>Tax Exempt</span>
                   </div>
                 </div>
               </div>
@@ -319,11 +370,11 @@ const Donate: React.FC = () => {
                 { percent: "10%", label: "Operations & Growth" },
                 { percent: "5%", label: "Administration" },
               ].map((item) => (
-                <div key={item.label} className="text-center p-6">
+                <div key={item.label} className="text-center p-6 bg-card/50 backdrop-blur-sm rounded-2xl hover:shadow-gold transition-all duration-300 hover:scale-105">
                   <p className="font-heading text-5xl font-bold text-accent mb-3">
                     {item.percent}
                   </p>
-                  <p className="text-muted-foreground">{item.label}</p>
+                  <p className="text-muted-foreground font-medium">{item.label}</p>
                 </div>
               ))}
             </div>
