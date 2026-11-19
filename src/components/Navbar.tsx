@@ -160,7 +160,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCircleNav }) => {
             </div>
 
             {/* Mobile Menu & Circle Trigger */}
-            
+            <div className="flex items-center gap-2 lg:hidden">
+             
+              
+
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-soft hover:scale-105 transition-transform focus:outline-none"
+                aria-label={isMobileMenuOpen ? "Close Menu" : "Open Menu"}
+              >
+                {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              </button>
+            </div>
           </div>
         </div>
       </header>
