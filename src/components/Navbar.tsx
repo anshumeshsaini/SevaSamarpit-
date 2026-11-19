@@ -160,36 +160,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCircleNav }) => {
             </div>
 
             {/* Mobile Menu & Circle Trigger */}
-            <div className="flex items-center gap-2 lg:hidden">
-              <Button 
-                asChild
-                size="sm"
-                className="bg-accent text-accent-foreground text-xs font-semibold px-3 py-1.5 rounded-full"
-              >
-                <Link to="/donate" className="flex items-center gap-1">
-                  <Heart className="w-3 h-3 fill-current" />
-                  <span>Donate</span>
-                </Link>
-              </Button>
-
-              {onOpenCircleNav && (
-                <button
-                  onClick={onOpenCircleNav}
-                  className="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center hover:bg-primary/20 transition-colors"
-                  aria-label="Circle of Seva Navigator"
-                >
-                  <Compass className="w-4 h-4 text-accent" />
-                </button>
-              )}
-
-              <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-soft hover:scale-105 transition-transform focus:outline-none"
-                aria-label={isMobileMenuOpen ? "Close Menu" : "Open Menu"}
-              >
-                {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-              </button>
-            </div>
+            
           </div>
         </div>
       </header>
